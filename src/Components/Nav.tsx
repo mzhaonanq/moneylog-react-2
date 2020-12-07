@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import React from 'react';
-require('../icons/money.svg')
-require('../icons/statistics.svg')
-require('../icons/tags.svg')
+import Icon from './Icon';
 
+require('../icons/money.svg');
+require('../icons/statistics.svg');
+require('../icons/tags.svg');
 
 
 const Wrapper = styled.nav`
@@ -33,21 +34,15 @@ const Nav =()=>{
     <Wrapper>
       <ul>
         <li>
-          <svg className="icons">
-            <use xlinkHref="#tags"/>
-          </svg>
+          <Icon name="tags"/>
           <Link to="/tags">标签</Link>
         </li>
         <li>
-          <svg className="icons">
-            <use xlinkHref="#money"/>
-          </svg>
+          <Icon name="money"/>
           <Link to="/money">记账</Link>
         </li>
         <li>
-          <svg className="icons">
-            <use xlinkHref="#statistics"/>
-          </svg>
+          <Icon name="statistics"/>
           <Link to="/statistics">统计</Link>
         </li>
       </ul>
