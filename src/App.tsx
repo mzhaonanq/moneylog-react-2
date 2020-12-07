@@ -1,23 +1,35 @@
 import React from 'react';
 import {HashRouter as Router, Link, Redirect, Route, Switch, useLocation} from 'react-router-dom';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+display:flex;
+  height: 100vh;
+  flex-direction: column;
+  border:1px solid red;
+`
+const Main = styled.main`
+flex-grow: 1;
+`
+
+const Nav = styled.nav`
+        border:1px solid green;
+>ul{
+  display:flex;
+  >li{
+    width: 33.33%;
+    text-align: center;
+    padding: 16px;
+  }
+}
+  
+`
 
 export default function App() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/tags">标签</Link>
-            </li>
-            <li>
-              <Link to="/money">记账</Link>
-            </li>
-            <li>
-              <Link to="/statistics">统计</Link>
-            </li>
-          </ul>
-        </nav>
+      <Wrapper>
+        <Main>
         <Switch>
           <Route exact path="/">
             <Redirect to="/money"/>
@@ -35,7 +47,21 @@ export default function App() {
             <NoMatch/>
           </Route>
         </Switch>
-      </div>
+        </Main>
+        <Nav>
+          <ul>
+            <li>
+              <Link to="/tags">标签</Link>
+            </li>
+            <li>
+              <Link to="/money">记账</Link>
+            </li>
+            <li>
+              <Link to="/statistics">统计</Link>
+            </li>
+          </ul>
+        </Nav>
+      </Wrapper>
     </Router>
   );
 }
