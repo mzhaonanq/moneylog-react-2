@@ -3,9 +3,7 @@ import {Link} from 'react-router-dom';
 import React from 'react';
 import Icon from './Icon';
 
-require('../icons/money.svg');
-require('../icons/statistics.svg');
-require('../icons/tags.svg');
+
 
 
 const Wrapper = styled.nav`
