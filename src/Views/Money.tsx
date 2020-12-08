@@ -16,17 +16,38 @@ padding: 12px 16px;
       margin: 8px 12px ;
     }
   }
-  > button{
-    border:none;
-    background:none;
+
+  > button {
+    border: none;
+    background: none;
     border-bottom: 1px solid #333;
     padding: 2px 4px;
     margin-top: 8px;
-    color:#666
+    color: #666
   }
 `
 
-const Money =()=> {
+const NoteSection = styled.section`
+  > label {
+    display: flex;
+    align-items: center;
+
+    > span {
+      white-space: nowrap;
+      padding:0 16px;
+      font-size: 14px;
+    }
+
+    > input {
+      width: 100%;
+      height: 72px;
+      border: none;
+      background: none;
+    }
+  }
+`;
+
+const Money = () => {
   return (
     <Layout>
       <TagsSection>
@@ -38,12 +59,12 @@ const Money =()=> {
         </ul>
         <button>新增标签</button>
       </TagsSection>
-      <section>
+      <NoteSection>
         <label>
           <span>备注</span>
           <input type="text"/>
         </label>
-      </section>
+      </NoteSection>
       <section>
         <div>100</div>
         <div>
