@@ -1,10 +1,35 @@
 import Layout from '../Components/Layout';
 import React from 'react';
+import styled from 'styled-components';
+
+const TagsSection = styled.section`
+  background: #ffffff;
+padding: 12px 16px;
+  > ul{
+    display:flex;
+    margin: 0 -12px;
+    > li{
+      background: #d9d9d9;
+      border-radius: 18px;
+      font-size: 14px;
+      padding: 3px 18px;
+      margin: 8px 12px ;
+    }
+  }
+  > button{
+    border:none;
+    background:none;
+    border-bottom: 1px solid #333;
+    padding: 2px 4px;
+    margin-top: 8px;
+    color:#666
+  }
+`
 
 const Money =()=> {
   return (
     <Layout>
-      <section>
+      <TagsSection>
         <ul>
           <li>衣</li>
           <li>食</li>
@@ -12,7 +37,7 @@ const Money =()=> {
           <li>行</li>
         </ul>
         <button>新增标签</button>
-      </section>
+      </TagsSection>
       <section>
         <label>
           <span>备注</span>

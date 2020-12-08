@@ -25,6 +25,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
+button{
+  font-family: inherit;
+}
 
 .icons{
   width: 1em;
@@ -37,6 +40,8 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color:#333333;
+  background: #f5f5f5;
 }
 
 code {

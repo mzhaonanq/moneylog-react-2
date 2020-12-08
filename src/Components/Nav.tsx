@@ -5,7 +5,6 @@ import Icon from './Icon';
 
 
 const Wrapper = styled.nav`
-  border: 1px solid green;
   line-height: 24px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
 
@@ -28,9 +27,9 @@ const Wrapper = styled.nav`
         }
       }
       & .selected { 
-        color: black;
+        color: #000000;
         > .icons{
-          fill:black;
+          fill:#000000;
         }
       }
     }
