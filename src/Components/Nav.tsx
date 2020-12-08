@@ -24,12 +24,13 @@ const Wrapper = styled.nav`
         > .icons {
           width: 24px;
           height: 24px;
+          fill:grey;
         }
       }
       & .selected { 
-        color: chartreuse;
+        color: black;
         > .icons{
-          fill:red;
+          fill:black;
         }
       }
     }
