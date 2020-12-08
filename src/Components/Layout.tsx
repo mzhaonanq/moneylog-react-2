@@ -1,4 +1,4 @@
-import Nav from './Nav';
+import {Nav} from './Nav';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -13,7 +13,7 @@ const Main = styled.main`
   overflow: auto;
 `
 
-const Layout = (props: any) => {
+const Layout:React.FunctionComponent = (props: any) => {
   return (
     <Wrapper>
       <Main className={props.className}>
@@ -24,4 +24,4 @@ const Layout = (props: any) => {
   );
 };
 
-export default Layout
+export {Layout}

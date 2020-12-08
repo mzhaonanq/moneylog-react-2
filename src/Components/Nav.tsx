@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
 import React from 'react';
-import Icon from './Icon';
+import {Icon} from './Icon';
 
 
 const Wrapper = styled.nav`
@@ -39,7 +39,7 @@ const Wrapper = styled.nav`
   }
 
 `
-const Nav =()=>{
+const Nav: React.FunctionComponent =()=>{
   return(
     <Wrapper>
       <ul>
@@ -66,4 +66,4 @@ const Nav =()=>{
   )
 }
 
-export default Nav
+export {Nav}

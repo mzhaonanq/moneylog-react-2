@@ -1,11 +1,11 @@
-import Layout from '../Components/Layout';
+import {Layout} from '../Components/Layout';
 import React from 'react';
 
-const Tags=()=> {
+const Tags: React.FunctionComponent=()=> {
   return (
     <Layout>
       <h2>标签页</h2>
     </Layout>
   );
 }
-export default  Tags
+export {Tags}
