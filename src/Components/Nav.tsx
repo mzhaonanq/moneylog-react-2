@@ -17,19 +17,22 @@ const Wrapper = styled.nav`
       padding: 4px 0;
 
       > a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
         > .icons {
           width: 24px;
           height: 24px;
-          fill:grey;
+          fill: grey;
         }
-      }
-      & .selected { 
-        color: #000000;
-        > .icons{
-          fill:#000000;
+
+        &.selected {
+          color: #000000;
+
+          > .icons {
+            fill: #000000;
+          }
         }
       }
     }
