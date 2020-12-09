@@ -1,23 +1,29 @@
-import styled from "styled-components";
-import React from 'react';
+import styled from 'styled-components';
+import React, {useState} from 'react';
 
 const Wrapper = styled.section`
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-start;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
   background: #ffffff;
-padding: 12px 16px;
-  > ul{
-    display:flex;
+  padding: 12px 16px;
+
+  > ul {
+    display: flex;
     margin: 0 -12px;
-    > li{
+
+    > li {
       background: #d9d9d9;
       border-radius: 18px;
       font-size: 14px;
       padding: 3px 18px;
-      margin: 8px 12px ;
+      margin: 8px 12px;
+
+      &.selected {
+        background: red;
+      }
     }
   }
 
@@ -31,18 +37,29 @@ padding: 12px 16px;
   }
 `
 
-const TagsSection: React.FunctionComponent = ()=>{
-  return(
+const TagsSection: React.FunctionComponent = () => {
+  const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const onToggleTag = (tag: string) => {
+    if (selectedTags.indexOf(tag) >= 0) {
+      setSelectedTags(selectedTags.filter(t => t !== tag));
+      console.log(selectedTags);
+    } else {
+      setSelectedTags([...selectedTags, tag]);
+      console.log(2);
+    }
+  };
+  return (
     <Wrapper>
       <ul>
-        <li>衣</li>
-        <li>食</li>
-        <li>住</li>
-        <li>行</li>
+        {tags.map(tag => <li key={tag}
+                             onClick={() => {onToggleTag(tag);}}
+                             className={selectedTags.indexOf(tag) >= 0 ? 'selected' : ''}>
+          {tag}</li>)}
       </ul>
       <button>新增标签</button>
     </Wrapper>
-  )
+  );
 }
 
 export {TagsSection}
