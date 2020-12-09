@@ -43,12 +43,18 @@ const TagsSection: React.FunctionComponent = () => {
   const onToggleTag = (tag: string) => {
     if (selectedTags.indexOf(tag) >= 0) {
       setSelectedTags(selectedTags.filter(t => t !== tag));
-      console.log(selectedTags);
     } else {
       setSelectedTags([...selectedTags, tag]);
-      console.log(2);
     }
   };
+  const addTag =()=>{
+    const tag = window.prompt('请输入标签名')
+    if(tag===''){
+      window.alert('标签名不可为空')
+    }else if(tag!==null){
+      setTags([...tags,tag])
+    }
+  }
   return (
     <Wrapper>
       <ul>
@@ -57,7 +63,7 @@ const TagsSection: React.FunctionComponent = () => {
                              className={selectedTags.indexOf(tag) >= 0 ? 'selected' : ''}>
           {tag}</li>)}
       </ul>
-      <button>新增标签</button>
+      <button onClick={addTag}>新增标签</button>
     </Wrapper>
   );
 }
