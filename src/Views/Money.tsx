@@ -19,24 +19,26 @@ const Money: React.FunctionComponent = () => {
     selectedCategory: '-' as ('-'|'+'),
     amount: 0
   })
-
+const onChange=(obj: Partial<typeof record>)=>{
+    setRecord({...record,...obj})
+}
   return (
     <MyLayout>
       <TagsSection
         valueForTags={record.selectedTags}
-        onChangeValue={(selectedTags)=>setRecord({...record,selectedTags})}
+        onChangeValue={(selectedTags)=>onChange({selectedTags})}
       />
       <NoteSection
         valueForNote={record.note}
-        onChangeValue={(note)=>setRecord({...record,note})}
+        onChangeValue={(note)=>onChange({note})}
       />
       <CategorySection
         valueForCategory={record.selectedCategory}
-        onChangeValue={(selectedCategory)=>{setRecord({...record,selectedCategory})}}
+        onChangeValue={(selectedCategory)=>onChange({selectedCategory})}
       />
       <NumberPadSection
         valueFofAmount={record.amount}
-        onChangeValue={(amount)=>setRecord({...record,amount})}
+        onChangeValue={(amount)=>onChange({amount})}
       />
     </MyLayout>
   );
