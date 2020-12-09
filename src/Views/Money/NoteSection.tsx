@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, {useRef, useState} from 'react';
+import React, {useRef} from 'react';
 
 const Wrapper = styled.section`
   > label {
@@ -21,12 +21,18 @@ const Wrapper = styled.section`
   }
 `;
 
-const NoteSection: React.FunctionComponent=()=> {
-  const [note, setNote] = useState('');
+type Props = {
+  valueForNote: string,
+  onChangeValue: (noteContent: string) => void
+}
+
+
+const NoteSection: React.FunctionComponent<Props> =(props)=> {
+  const note = props.valueForNote
   const refInput = useRef<HTMLInputElement>(null);
   const onBlur2 = () => {
     if (refInput.current !== null) {
-      setNote(refInput.current.value);
+      props.onChangeValue(refInput.current.value);
     }
   };
 

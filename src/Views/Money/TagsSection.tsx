@@ -36,15 +36,19 @@ const Wrapper = styled.section`
     color: #666
   }
 `
+type Props={
+  valueForTags: string[],
+  onChangeValue: (tagsArray: string[])=>void
+}
 
-const TagsSection: React.FunctionComponent = () => {
+const TagsSection: React.FunctionComponent<Props> = (props) => {
   const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const selectedTags = props.valueForTags
   const onToggleTag = (tag: string) => {
     if (selectedTags.indexOf(tag) >= 0) {
-      setSelectedTags(selectedTags.filter(t => t !== tag));
+      props.onChangeValue(selectedTags.filter(t => t !== tag));
     } else {
-      setSelectedTags([...selectedTags, tag]);
+      props.onChangeValue([...selectedTags, tag]);
     }
   };
   const addTag =()=>{
@@ -58,10 +62,11 @@ const TagsSection: React.FunctionComponent = () => {
   return (
     <Wrapper>
       <ul>
-        {tags.map(tag => <li key={tag}
-                             onClick={() => {onToggleTag(tag);}}
-                             className={selectedTags.indexOf(tag) >= 0 ? 'selected' : ''}>
-          {tag}</li>)}
+        {tags.map(tag =>
+          <li key={tag}
+              onClick={() => {onToggleTag(tag);}}
+              className={selectedTags.indexOf(tag) >= 0 ? 'selected' : ''}>
+            {tag}</li>)}
       </ul>
       <button onClick={addTag}>新增标签</button>
     </Wrapper>

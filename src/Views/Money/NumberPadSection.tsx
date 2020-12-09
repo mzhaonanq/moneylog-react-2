@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, {useState} from 'react';
+import React from 'react';
 
 
 const Wrapper = styled.section`
@@ -74,16 +74,22 @@ const Wrapper = styled.section`
 
 `;
 
-const NumberPadSection: React.FunctionComponent = () => {
-  const [output, _setOutput] = useState('0');
+type Props={
+  valueFofAmount: number,
+  onChangeValue: (x: number)=>void
+}
+
+const NumberPadSection: React.FunctionComponent<Props> = (props) => {
+  const output = props.valueFofAmount.toString()
   const setOutput =(output: string)=>{
     if(output.length>16){
       output=output.slice(0,16)
     }else if(output.length===0){
       output = '0'
     }
-      _setOutput(output)
+      props.onChangeValue(parseFloat(output))
   }
+
   const onClickButtonWrapper = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
     switch (text) {
@@ -125,6 +131,7 @@ const NumberPadSection: React.FunctionComponent = () => {
         break;
     }
   };
+
   return (
     <Wrapper>
       <div className="output">{output}</div>
