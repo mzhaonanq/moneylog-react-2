@@ -3,19 +3,12 @@ import React from 'react';
 import {useTags} from '../useTags';
 import {Icon} from '../Components/Icon';
 import {Layout} from '../Components/Layout';
-import styled from 'styled-components';
+import {Button} from '../Components/Button';
 
 type Params = {
   tagId: string
 }
 
-const Button = styled.button`
-font-size: 18px;
-  border:none;
-  background: #767676;
-  color: #ffffff;
-  padding: 8px 12px;
-`
 
 
 const Tag: React.FunctionComponent = () => {

@@ -4,6 +4,7 @@ import {useTags} from '../useTags';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {Icon} from '../Components/Icon';
+import {Button} from '../Components/Button';
 
 const TagList = styled.ul`
   background: #ffffff;
@@ -22,13 +23,6 @@ const TagList = styled.ul`
   }
 `;
 
-const Button = styled.button`
-font-size: 18px;
-  border:none;
-  background: #767676;
-  color: #ffffff;
-  padding: 8px 12px;
-`
 
 const CenterWrapper = styled.div`
 display:flex;
