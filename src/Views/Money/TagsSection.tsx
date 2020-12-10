@@ -38,18 +38,19 @@ const Wrapper = styled.section`
   }
 `
 type Props={
-  valueForTags: string[],
-  onChangeValue: (tagsArray: string[])=>void
+  valueForTagsId: number[],
+  onChangeValue: (tagsArray: number[])=>void
 }
 
 const TagsSection: React.FunctionComponent<Props> = (props) => {
   const {tags,setTags}=useTags()
-  const selectedTags = props.valueForTags
-  const onToggleTag = (tag: string) => {
-    if (selectedTags.indexOf(tag) >= 0) {
-      props.onChangeValue(selectedTags.filter(t => t !== tag));
+  const selectedTagsId = props.valueForTagsId
+
+  const onToggleTag = (tagId: number) => {
+    if (selectedTagsId.indexOf(tagId) >= 0) {
+      props.onChangeValue(selectedTagsId.filter(t => t !== tagId));
     } else {
-      props.onChangeValue([...selectedTags, tag]);
+      props.onChangeValue([...selectedTagsId, tagId]);
     }
   };
   const addTag =()=>{
@@ -57,17 +58,17 @@ const TagsSection: React.FunctionComponent<Props> = (props) => {
     if(tag===''){
       window.alert('标签名不可为空')
     }else if(tag!==null){
-      setTags([...tags,tag])
+      setTags([...tags,{id:Math.random(),name:tag}])
     }
   }
   return (
     <Wrapper>
       <ul>
         {tags.map(tag =>
-          <li key={tag}
-              onClick={() => {onToggleTag(tag);}}
-              className={selectedTags.indexOf(tag) >= 0 ? 'selected' : ''}>
-            {tag}</li>)}
+          <li key={tag.id}
+              onClick={() => {onToggleTag(tag.id);}}
+              className={selectedTagsId.indexOf(tag.id) >= 0 ? 'selected' : ''}>
+            {tag.name}</li>)}
       </ul>
       <button onClick={addTag}>新增标签</button>
     </Wrapper>

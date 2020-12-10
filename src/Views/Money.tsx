@@ -14,7 +14,7 @@ const MyLayout = styled(Layout)`
 const Money: React.FunctionComponent = () => {
 
   const [record,setRecord]=useState({
-    selectedTags: [] as string[],
+    selectedTagsId: [] as number[],
     note: '',
     selectedCategory: '-' as ('-'|'+'),
     amount: 0
@@ -25,8 +25,8 @@ const onChange=(obj: Partial<typeof record>)=>{
   return (
     <MyLayout>
       <TagsSection
-        valueForTags={record.selectedTags}
-        onChangeValue={(selectedTags)=>onChange({selectedTags})}
+        valueForTagsId={record.selectedTagsId}
+        onChangeValue={(selectedTagsId)=>onChange({selectedTagsId})}
       />
       <NoteSection
         valueForNote={record.note}

@@ -42,13 +42,13 @@ const Space = styled.div`
 `
 
 const Tags: React.FunctionComponent = () => {
-  const {tags, setTags} = useTags();
+  const {tags} = useTags();
   return (
     <Layout>
       <TagList>
         {tags.map(tag =>
 
-          <li key={tag}>
+          <li key={tag.id}>
             <Link to={'/tags/'+tag} >
             <span className='oneLine'>{tag}</span>
             <Icon name='right'/>
