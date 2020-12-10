@@ -8,8 +8,8 @@ type Params = {
 
 const Tag: React.FunctionComponent=()=>{
   const { tagId } = useParams<Params>()
-  const {tags} = useTags()
-  const tag = tags.filter(t=>t.id===parseFloat(tagId))[0]
+  const {findTagById} =useTags()
+  const tag = findTagById(parseFloat(tagId))[0]
   return(
     <div>{tag.name}</div>
   )
