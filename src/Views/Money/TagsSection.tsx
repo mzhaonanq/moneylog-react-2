@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import {useTags} from '../../useTags';
+import {Id} from '../../lib/Id';
 
 const Wrapper = styled.section`
   flex-grow: 1;
@@ -58,7 +59,7 @@ const TagsSection: React.FunctionComponent<Props> = (props) => {
     if(tag===''){
       window.alert('标签名不可为空')
     }else if(tag!==null){
-      setTags([...tags,{id:Math.random(),name:tag}])
+      setTags([...tags,{id:(new Id()).idValue,name:tag}])
     }
   }
   return (
