@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import React, {ChangeEventHandler, FocusEventHandler, useRef} from 'react';
 import {Input} from '../../Components/Input';
 
-const Wrapper = styled.section``;
+const Wrapper = styled.section`
+padding: 14px 0;
+`;
 
 type Props = {
   valueForNote: string,
