@@ -31,8 +31,8 @@ const Main = styled.main`
 
 const Tag: React.FunctionComponent = () => {
   const {tagId} = useParams<Params>();
-  const {findTagById, updateTag} = useTags();
-  const tag = findTagById(parseFloat(tagId))[0];
+  const {findTagById, updateTag, deleteTag} = useTags();
+  const tag = findTagById(parseFloat(tagId));
   return (
     <Layout>
       <Header>
@@ -40,18 +40,22 @@ const Tag: React.FunctionComponent = () => {
         <span>编辑标签</span>
         <Icon/>
       </Header>
-      <Main>
-        <Input title='标签名' placeholder='在这里输入标签名' value={tag.name}
-               onChange={(e) => {updateTag(tag.id, {name: e.target.value});}}/>
-                 </Main>
-                 <Center>
-                 <Space/>
-                 <Space/>
-                 <Space/>
-                 <Button>删除标签</Button>
-                 </Center>
-                 </Layout>
-                 );
-                 }
+      {tag ?
+        <div>
+          <Main>
+            <Input title='标签名' placeholder='在这里输入标签名' value={tag.name}
+                   onChange={(e) => {updateTag(tag.id, {name: e.target.value});}}/>
+          </Main>
+          <Center>
+            <Space/>
+            <Space/>
+            <Space/>
+            <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
+          </Center>
+        </div>
+        : <Center>标签已删除</Center>}
+    </Layout>
+  );
+}
 
 export {Tag}
