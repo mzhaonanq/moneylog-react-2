@@ -36,7 +36,7 @@ const Tag: React.FunctionComponent = () => {
   return (
     <Layout>
       <Header>
-        <Icon name='left'/>
+        <Icon name='left'  className='bruce'/>
         <span>编辑标签</span>
         <Icon/>
       </Header>
