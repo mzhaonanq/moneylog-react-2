@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {Icon} from '../Components/Icon';
 import {Button} from '../Components/Button';
+import {Space} from '../Components/Space';
+import {Center} from '../Components/Center';
 
 const TagList = styled.ul`
   background: #ffffff;
@@ -24,17 +26,6 @@ const TagList = styled.ul`
 `;
 
 
-const CenterWrapper = styled.div`
-display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-
-const Space = styled.div`
-  height: 32px;
-`
-
 const Tags: React.FunctionComponent = () => {
   const {tags} = useTags();
   return (
@@ -49,12 +40,12 @@ const Tags: React.FunctionComponent = () => {
             </Link>
           </li>)}
       </TagList>
-      <CenterWrapper>
+      <Center>
         <Space/>
         <Space/>
         <Space/>
         <Button>新增标签</Button>
-      </CenterWrapper>
+      </Center>
     </Layout>
   );
 }

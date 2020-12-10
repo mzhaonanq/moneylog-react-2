@@ -6,6 +6,8 @@ import {Layout} from '../Components/Layout';
 import {Button} from '../Components/Button';
 import styled from 'styled-components';
 import {Input} from '../Components/Input';
+import {Center} from '../Components/Center';
+import {Space} from '../Components/Space';
 
 type Params = {
   tagId: string
@@ -41,7 +43,12 @@ const Tag: React.FunctionComponent = () => {
       <Main>
         <Input title='标签名' placeholder='在这里输入标签名'/>
       </Main>
+      <Center>
+        <Space/>
+        <Space/>
+        <Space/>
       <Button>删除标签</Button>
+      </Center>
     </Layout>
   );
 }
