@@ -40,7 +40,7 @@ const NoteSection: React.FunctionComponent<Props> =(props)=> {
     <Wrapper>
       <label>
         <span>备注</span>
-        <input ref={refInput} type="text" defaultValue={note} onBlur={onBlur2}/>
+        <input ref={refInput} type="text" placeholder="在这里输入备注" defaultValue={note} onBlur={onBlur2}/>
       </label>
     </Wrapper>
   );
