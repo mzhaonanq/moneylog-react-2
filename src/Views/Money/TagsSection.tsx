@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import React from 'react';
 import {useTags} from '../../useTags';
-import {Id} from '../../lib/Id';
 
 const Wrapper = styled.section`
   flex-grow: 1;
-  display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  display: flex;
   align-items: flex-start;
   background: #ffffff;
   padding: 12px 16px;
@@ -44,7 +43,7 @@ type Props={
 }
 
 const TagsSection: React.FunctionComponent<Props> = (props) => {
-  const {tags,setTags}=useTags()
+  const {tags,addTag}=useTags()
   const selectedTagsId = props.valueForTagsId
 
   const onToggleTag = (tagId: number) => {
@@ -54,14 +53,7 @@ const TagsSection: React.FunctionComponent<Props> = (props) => {
       props.onChangeValue([...selectedTagsId, tagId]);
     }
   };
-  const addTag =()=>{
-    const tag = window.prompt('请输入标签名')
-    if(tag===''){
-      window.alert('标签名不可为空')
-    }else if(tag!==null){
-      setTags([...tags,{id:(new Id()).idValue,name:tag}])
-    }
-  }
+
   return (
     <Wrapper>
       <ul>

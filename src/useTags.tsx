@@ -18,11 +18,18 @@ const useTags=()=>{
   const updateTag = (id: number, obj: { name: string }) => {
     setTags(tags.map(tag => tag.id === id ? {id, name: obj.name} : tag));
   };
-
   const deleteTag = (id: number) => {
    setTags(tags.filter(tag=>tag.id!==id))
   };
-  return {tags, setTags, findTagById, updateTag, deleteTag};
+  const addTag =()=>{
+    const tag = window.prompt('请输入标签名')
+    if(tag===''){
+      window.alert('标签名不可为空')
+    }else if(tag!==null){
+      setTags([...tags,{id:(new Id()).idValue,name:tag}])
+    }
+  }
+  return {tags, setTags, findTagById, updateTag, deleteTag,addTag};
 }
 
 export {useTags}
