@@ -1,4 +1,4 @@
-import {useParams} from 'react-router-dom';
+import {useParams,useHistory} from 'react-router-dom';
 import React from 'react';
 import {useTags} from '../useTags';
 import {Icon} from '../Components/Icon';
@@ -31,12 +31,13 @@ const Main = styled.main`
 
 const Tag: React.FunctionComponent = () => {
   const {tagId} = useParams<Params>();
+  const history = useHistory()
   const {findTagById, updateTag, deleteTag} = useTags();
   const tag = findTagById(parseFloat(tagId));
   return (
     <Layout>
       <Header>
-        <Icon name='left'  className='bruce'/>
+        <Icon name='left'  className='bruce' onClick={()=>history.goBack()}/>
         <span>编辑标签</span>
         <Icon/>
       </Header>

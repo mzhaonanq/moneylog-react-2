@@ -9,9 +9,9 @@ type Props = {
 }&React.SVGAttributes<SVGElement>
 
 const Icon: React.FunctionComponent<Props> = (props) => {
-  const {name,children,className}=props
+  const {name,children,className,...rest}=props
   return (
-    <svg className ={classnames('icons',className)}>
+    <svg className ={classnames('icons',className)} {...rest} >
       {name && <use xlinkHref={'#' + name}/>}
     </svg>
   );
