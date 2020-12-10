@@ -14,13 +14,16 @@ export default function App() {
         <Route exact path="/">
           <Redirect to="/money"/>
         </Route>
-        <Route path="/tags">
+        <Route exact path="/tags">
           <Tags/>
         </Route>
-        <Route path="/money">
+        <Route exact path='/tags/:tagName'>
+          <div>hi</div>
+        </Route>
+        <Route exact path="/money">
           <Money/>
         </Route>
-        <Route path="/statistics">
+        <Route exact path="/statistics">
             <Statistics/>
           </Route>
           <Route path="*">

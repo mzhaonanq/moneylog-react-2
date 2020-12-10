@@ -2,6 +2,7 @@ import {Layout} from '../Components/Layout';
 import React from 'react';
 import {useTags} from '../useTags';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 import {Icon} from '../Components/Icon';
 
 const TagList = styled.ul`
@@ -9,12 +10,15 @@ const TagList = styled.ul`
 
   > li {
     line-height: 20px;
-    padding: 12px 0;
-    margin: 0 16px;
+    margin-left :  16px;
     border-bottom: 1px solid #d5d5d5;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    > a{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px 12px 0;
+
+    }
   }
 `;
 
@@ -43,9 +47,12 @@ const Tags: React.FunctionComponent = () => {
     <Layout>
       <TagList>
         {tags.map(tag =>
+
           <li key={tag}>
+            <Link to={'/tags/'+tag} >
             <span className='oneLine'>{tag}</span>
             <Icon name='right'/>
+            </Link>
           </li>)}
       </TagList>
       <CenterWrapper>
