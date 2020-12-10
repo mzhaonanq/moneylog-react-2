@@ -4,6 +4,7 @@ import {Money} from './Views/Money';
 import {Statistics} from './Views/Statistics';
 import {Tags} from './Views/Tags';
 import {NoMatch} from './Views/NoMatch';
+import {Tag} from './Views/Tag';
 
 
 
@@ -18,7 +19,7 @@ export default function App() {
           <Tags/>
         </Route>
         <Route exact path='/tags/:tagId'>
-          <div>hi</div>
+        <Tag/>
         </Route>
         <Route exact path="/money">
           <Money/>
