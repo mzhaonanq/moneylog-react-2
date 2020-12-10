@@ -31,7 +31,7 @@ const Main = styled.main`
 
 const Tag: React.FunctionComponent = () => {
   const {tagId} = useParams<Params>();
-  const {findTagById} = useTags();
+  const {findTagById, updateTag} = useTags();
   const tag = findTagById(parseFloat(tagId))[0];
   return (
     <Layout>
@@ -41,16 +41,17 @@ const Tag: React.FunctionComponent = () => {
         <Icon/>
       </Header>
       <Main>
-        <Input title='标签名' placeholder='在这里输入标签名'/>
-      </Main>
-      <Center>
-        <Space/>
-        <Space/>
-        <Space/>
-      <Button>删除标签</Button>
-      </Center>
-    </Layout>
-  );
-}
+        <Input title='标签名' placeholder='在这里输入标签名' value={tag.name}
+               onChange={(e) => {updateTag(tag.id, {name: e.target.value});}}/>
+                 </Main>
+                 <Center>
+                 <Space/>
+                 <Space/>
+                 <Space/>
+                 <Button>删除标签</Button>
+                 </Center>
+                 </Layout>
+                 );
+                 }
 
 export {Tag}

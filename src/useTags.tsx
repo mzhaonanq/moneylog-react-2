@@ -9,9 +9,21 @@ const defaultTags=   [
 ]
 
 const useTags=()=>{
-const [tags, setTags] = useState<{ id: number, name: string }[]>(defaultTags);
-const findTagById =(id: number)=>tags.filter(t=>t.id===id)
-return{tags,setTags,findTagById}
+  const [tags, setTags] = useState<{ id: number, name: string }[]>(defaultTags);
+  const findTagById = (id: number) => tags.filter(t => t.id === id);
+  const findTagIndex = (id: number) => {
+    const tag = findTagById(id)[0];
+    return tags.indexOf(tag);
+  };
+  const updateTag = (id: number, obj: { name: string }) => {
+    const tagIndex = findTagIndex(id);
+    if (tagIndex >= 0) {
+      let tagsClone = JSON.parse(JSON.stringify(tags));
+      tagsClone.splice(tagIndex, 1, {id, ...obj});
+      setTags(tagsClone)
+    }
+  };
+  return {tags, setTags, findTagById, updateTag};
 }
 
 export {useTags}
