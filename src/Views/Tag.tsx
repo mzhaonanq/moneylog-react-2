@@ -4,12 +4,20 @@ import {useTags} from '../useTags';
 import {Icon} from '../Components/Icon';
 import {Layout} from '../Components/Layout';
 import {Button} from '../Components/Button';
+import styled from 'styled-components';
 
 type Params = {
   tagId: string
 }
 
-
+const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 20px;
+  padding: 14px 0;
+  background: #ffffff;
+`;
 
 const Tag: React.FunctionComponent = () => {
   const {tagId} = useParams<Params>();
@@ -17,13 +25,16 @@ const Tag: React.FunctionComponent = () => {
   const tag = findTagById(parseFloat(tagId))[0];
   return (
     <Layout>
-      <header>
+      <Header>
         <Icon name='left'/>
         <span>编辑标签</span>
-      </header>
+        <Icon/>
+      </Header>
       <main>
-        <span>标签名</span>
-        <input type="text" placeholder="在这里输入标签名"/>
+        <label>
+          <span>标签名</span>
+          <input type="text" placeholder="在这里输入标签名"/>
+        </label>
       </main>
       <Button>删除标签</Button>
     </Layout>
