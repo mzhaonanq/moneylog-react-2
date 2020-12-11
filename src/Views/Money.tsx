@@ -12,19 +12,24 @@ const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
 `;
+
+const defaultRecord = {
+  selectedTagsId: [] as number[],
+  note: '',
+  selectedCategory: '-' as ('-'|'+'),
+  amount: 0
+}
+
 const Money: React.FunctionComponent = () => {
   const {saveResultRecord} =useResultRecord()
-  const [record,setRecord]=useState({
-    selectedTagsId: [] as number[],
-    note: '',
-    selectedCategory: '-' as ('-'|'+'),
-    amount: 0
-  })
+  const [record,setRecord]=useState(defaultRecord)
+
 const onChange=(obj: Partial<typeof record>)=>{
     setRecord({...record,...obj})
 }
 const submitRecord=()=>{
     saveResultRecord(record)
+    setRecord(defaultRecord)
 }
   return (
     <MyLayout>
