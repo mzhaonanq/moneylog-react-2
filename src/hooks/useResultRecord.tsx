@@ -1,7 +1,8 @@
 import {useEffect, useState} from 'react';
 import {useUpdate} from './useUpdate';
 
-type RecordType = {
+
+export type RecordType = {
   selectedTagsId: number[],
   note: string,
   selectedCategory: '-'|'+',
