@@ -4,6 +4,7 @@ import {CategorySection} from './Money/CategorySection';
 import styled from 'styled-components';
 import {useResultRecord} from '../hooks/useResultRecord';
 import {useTags} from '../hooks/useTags';
+import dayjs from 'dayjs'
 
 const Wrapper = styled.div`
   background: #ffffff;
@@ -27,6 +28,7 @@ const Statistics: React.FunctionComponent = () => {
   const [category, setCategory] = useState<'-' | '+'>('-');
   const {resultRecord} = useResultRecord();
   const {getTagNameById} = useTags();
+  const selectedRecord = resultRecord.filter(r=>r.selectedCategory===category)
   return (
     <Layout>
       <Wrapper>
@@ -36,7 +38,7 @@ const Statistics: React.FunctionComponent = () => {
         />
       </Wrapper>
       <div>
-        {resultRecord.map(item => {
+        {selectedRecord.map(item => {
           return <Item>
             <div className='tags'>
             {item.selectedTagsId.map(id => <span>{getTagNameById(id).name}</span>)}
@@ -44,6 +46,9 @@ const Statistics: React.FunctionComponent = () => {
             { item.note &&  <div className='note'>
               {item.note}
             </div> }
+            <div>
+              {dayjs(item.createAt).format('YYYY年MM月DD日')}
+            </div>
             <div className='amount'>
             ￥{item.amount}
             </div>
