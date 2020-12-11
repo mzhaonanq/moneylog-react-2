@@ -1,11 +1,11 @@
-import {useEffect, useRef, useState} from 'react';
-import {Id} from './lib/Id';
+import {useEffect, useState} from 'react';
+import {Id} from '../lib/Id';
+import {useUpdate} from './useUpdate';
 
 const useTags=()=> {
   const [tags, setTags] = useState<{ id: number, name: string }[]>([]);
   useEffect(() => {
   let tagsFromLocalStorage =JSON.parse(window.localStorage.getItem('tagsToLocalStorage') || '[]')
-    console.log('在组件挂载后执行了');
     if(tagsFromLocalStorage.length===0){
       tagsFromLocalStorage = [
         {id: (new Id()).idValue, name: '衣'},
@@ -15,20 +15,13 @@ const useTags=()=> {
       ];
     }
     setTags(tagsFromLocalStorage);
-    console.log(tags);
   }, []);
-  let count = useRef(0);
 
-  useEffect(() => {
-    count.current += 1;
-    if (count.current > 1) {
-      window.localStorage.setItem('tagsToLocalStorage', JSON.stringify(tags));
-      console.log('tags更新后执行了');
-      console.log(tags);
-    }
+  useUpdate(() => {
+    window.localStorage.setItem('tagsToLocalStorage', JSON.stringify(tags));
   }, [tags]);
 
-  console.log('进入useTags了');
+
   const findTagById = (id: number) => tags.filter(t => t.id === id)[0];
   // eslint-disable-next-line
   const findTagIndex = (id: number) => {
