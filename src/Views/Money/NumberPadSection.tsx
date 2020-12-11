@@ -76,7 +76,8 @@ const Wrapper = styled.section`
 
 type Props={
   valueFofAmount: number,
-  onChangeValue: (x: number)=>void
+  onChangeValue: (x: number) => void
+  onOk: () => void
 }
 
 const NumberPadSection: React.FunctionComponent<Props> = (props) => {
@@ -104,24 +105,24 @@ const NumberPadSection: React.FunctionComponent<Props> = (props) => {
       case '9':
       case '0':
         if(output==='0'){
-          setOutput(text)
-        }else{
-          setOutput(output+text)
+          setOutput(text);
+        } else {
+          setOutput(output + text);
         }
         break;
       case '.':
-        if(output.indexOf(text)<0){
-          setOutput(output+text)
+        if (output.indexOf(text) < 0) {
+          setOutput(output + text);
         }
         break;
       case 'OK':
-        console.log('OK');
+        props.onOk();
         break;
       case '删除':
-        if(output.length===1){
-          setOutput('')
-        }else{
-          setOutput(output.slice(0,-1))
+        if (output.length === 1) {
+          setOutput('');
+        } else {
+          setOutput(output.slice(0, -1));
         }
         console.log('删除');
         break;

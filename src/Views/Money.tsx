@@ -5,6 +5,7 @@ import {CategorySection} from './Money/CategorySection';
 import {NoteSection} from './Money/NoteSection';
 import {NumberPadSection} from './Money/NumberPadSection';
 import {TagsSection} from './Money/TagsSection';
+import {useResultRecord} from '../hooks/useResutRecord';
 
 
 const MyLayout = styled(Layout)`
@@ -12,7 +13,7 @@ const MyLayout = styled(Layout)`
   flex-direction: column;
 `;
 const Money: React.FunctionComponent = () => {
-
+  const {saveResultRecord} =useResultRecord()
   const [record,setRecord]=useState({
     selectedTagsId: [] as number[],
     note: '',
@@ -21,6 +22,9 @@ const Money: React.FunctionComponent = () => {
   })
 const onChange=(obj: Partial<typeof record>)=>{
     setRecord({...record,...obj})
+}
+const submitRecord=()=>{
+    saveResultRecord(record)
 }
   return (
     <MyLayout>
@@ -39,6 +43,7 @@ const onChange=(obj: Partial<typeof record>)=>{
       <NumberPadSection
         valueFofAmount={record.amount}
         onChangeValue={(amount)=>onChange({amount})}
+        onOk={submitRecord}
       />
     </MyLayout>
   );

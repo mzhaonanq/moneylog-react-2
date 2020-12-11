@@ -5,7 +5,7 @@ import {useUpdate} from './useUpdate';
 const useTags=()=> {
   const [tags, setTags] = useState<{ id: number, name: string }[]>([]);
   useEffect(() => {
-  let tagsFromLocalStorage =JSON.parse(window.localStorage.getItem('tagsToLocalStorage') || '[]')
+  let tagsFromLocalStorage =JSON.parse(window.localStorage.getItem('tagsLocalStorage') || '[]')
     if(tagsFromLocalStorage.length===0){
       tagsFromLocalStorage = [
         {id: (new Id()).idValue, name: '衣'},
@@ -18,7 +18,8 @@ const useTags=()=> {
   }, []);
 
   useUpdate(() => {
-    window.localStorage.setItem('tagsToLocalStorage', JSON.stringify(tags));
+    window.localStorage.setItem('tagsLocalStorage', JSON.stringify(tags));
+
   }, [tags]);
 
 
