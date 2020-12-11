@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, {useState} from 'react';
 
 
 const Wrapper = styled.section`
@@ -74,22 +74,26 @@ const Wrapper = styled.section`
 
 `;
 
-type Props={
-  valueFofAmount: number,
+type Props= {
+  valueForAmount: number,
   onChangeValue: (x: number) => void
   onOk: () => void
 }
 
 const NumberPadSection: React.FunctionComponent<Props> = (props) => {
-  const output = props.valueFofAmount.toString()
-  const setOutput =(output: string)=>{
-    if(output.length>16){
-      output=output.slice(0,16)
-    }else if(output.length===0){
-      output = '0'
+  const [output, setOutput] = useState(props.valueForAmount.toString());
+  const _setOutput = (outputValue: string) => {
+    let _output: string;
+    if (outputValue.length > 16) {
+      _output = outputValue.slice(0, 16);
+    } else if (outputValue.length === 0) {
+      _output = '0';
+    } else {
+      _output = outputValue;
     }
-      props.onChangeValue(parseFloat(output))
-  }
+    setOutput(_output);//组件内部使用
+    props.onChangeValue(parseFloat(_output));//转成number传给父组件
+  };
 
   const onClickButtonWrapper = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
@@ -105,14 +109,14 @@ const NumberPadSection: React.FunctionComponent<Props> = (props) => {
       case '9':
       case '0':
         if(output==='0'){
-          setOutput(text);
+          _setOutput(text);
         } else {
-          setOutput(output + text);
+          _setOutput(output + text);
         }
         break;
       case '.':
         if (output.indexOf(text) < 0) {
-          setOutput(output + text);
+          _setOutput(output + text);
         }
         break;
       case 'OK':
@@ -120,14 +124,14 @@ const NumberPadSection: React.FunctionComponent<Props> = (props) => {
         break;
       case '删除':
         if (output.length === 1) {
-          setOutput('');
+          _setOutput('');
         } else {
-          setOutput(output.slice(0, -1));
+          _setOutput(output.slice(0, -1));
         }
         console.log('删除');
         break;
       case '清空':
-        setOutput('')
+        _setOutput('')
         console.log('清空');
         break;
     }

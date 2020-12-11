@@ -5,7 +5,7 @@ import {CategorySection} from './Money/CategorySection';
 import {NoteSection} from './Money/NoteSection';
 import {NumberPadSection} from './Money/NumberPadSection';
 import {TagsSection} from './Money/TagsSection';
-import {useResultRecord} from '../hooks/useResutRecord';
+import {useResultRecord} from '../hooks/useResultRecord';
 
 
 const MyLayout = styled(Layout)`
@@ -24,12 +24,15 @@ const Money: React.FunctionComponent = () => {
   const {saveResultRecord} =useResultRecord()
   const [record,setRecord]=useState(defaultRecord)
 
-const onChange=(obj: Partial<typeof record>)=>{
+  console.log(record);
+  const onChange=(obj: Partial<typeof record>)=>{
     setRecord({...record,...obj})
 }
 const submitRecord=()=>{
-    saveResultRecord(record)
-    setRecord(defaultRecord)
+    if(saveResultRecord(record)){
+      alert('保存成功')
+      setRecord(defaultRecord)
+    }
 }
   return (
     <MyLayout>
@@ -46,8 +49,8 @@ const submitRecord=()=>{
         onChangeValue={(selectedCategory)=>onChange({selectedCategory})}
       />
       <NumberPadSection
-        valueFofAmount={record.amount}
-        onChangeValue={(amount)=>onChange({amount})}
+        valueForAmount={record.amount}
+        onChangeValue={(amount) => onChange({amount})}
         onOk={submitRecord}
       />
     </MyLayout>

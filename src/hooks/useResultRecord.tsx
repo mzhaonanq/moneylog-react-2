@@ -19,13 +19,15 @@ const useResultRecord=()=>{
       console.log('数据存入了');
   },[resultRecord])
   const saveResultRecord =(record: RecordType)=>{
-    if (record.amount === 0) {
+    if (record.amount <= 0) {
       alert('请输入金额');
+      return false;
     } else if (record.selectedTagsId.length === 0) {
       alert('请选择标签');
+      return false;
     } else {
       setResultRecord([...resultRecord, {...record, createAt: (new Date()).toISOString()}]);
-      alert('添加成功');
+      return true
     }
   }
   return {saveResultRecord}
