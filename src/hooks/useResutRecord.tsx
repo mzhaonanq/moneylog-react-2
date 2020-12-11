@@ -5,7 +5,8 @@ type RecordType = {
   selectedTagsId: number[],
   note: string,
   selectedCategory: '-'|'+',
-  amount: number
+  amount: number,
+  createAt?: string,
 }
 
 const useResultRecord=()=>{
@@ -18,7 +19,7 @@ const useResultRecord=()=>{
       console.log('数据存入了');
   },[resultRecord])
   const saveResultRecord =(record: RecordType)=>{
-    setResultRecord([...resultRecord,record])
+    setResultRecord([...resultRecord,{...record,createAt: (new Date()).toISOString()}])
   }
   return {saveResultRecord}
 }
