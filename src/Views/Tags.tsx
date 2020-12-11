@@ -35,7 +35,7 @@ const Tags: React.FunctionComponent = () => {
 
           <li key={tag.id}>
             <Link to={'/tags/'+tag.id} >
-            <span className='oneLine'>{tag.name}</span>
+            <span className='oneLine'>{tag.id}:{tag.name}</span>
             <Icon name='right'/>
             </Link>
           </li>)}

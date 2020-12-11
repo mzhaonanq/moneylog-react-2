@@ -1,16 +1,30 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Id} from './lib/Id';
 
-const defaultTags=   [
-  {id: (new Id()).idValue, name: '衣'},
-  {id: (new Id()).idValue, name: '食'},
-  {id: (new Id()).idValue, name: '住'},
-  {id: (new Id()).idValue, name: '行'}
-]
-
-const useTags=()=>{
-  const [tags, setTags] = useState<{ id: number, name: string }[]>(defaultTags);
+const useTags=()=> {
+  const [tags, setTags] = useState<{ id: number, name: string }[]>([]);
+  useEffect(() => {
+  let tagsFromLocalStorage =JSON.parse(window.localStorage.getItem('tagsToLocalStorage') || '[]')
+    console.log('在组件挂载后执行了');
+    if(tagsFromLocalStorage.length===0){
+      tagsFromLocalStorage =  [
+        {id: (new Id()).idValue, name: '衣'},
+        {id: (new Id()).idValue, name: '食'},
+        {id: (new Id()).idValue, name: '住'},
+        {id: (new Id()).idValue, name: '行'}
+      ]
+    }
+    setTags(tagsFromLocalStorage)
+    console.log(tags);
+  }, []);
+  useEffect(() => {
+    window.localStorage.setItem('tagsToLocalStorage', JSON.stringify(tags));
+    console.log('tags更新后执行了');
+    console.log(tags);
+  }, [tags]);
+  console.log('进入useTags了');
   const findTagById = (id: number) => tags.filter(t => t.id === id)[0];
+  // eslint-disable-next-line
   const findTagIndex = (id: number) => {
     const tag = findTagById(id);
     return tags.indexOf(tag);
