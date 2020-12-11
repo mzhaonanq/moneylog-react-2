@@ -1,5 +1,4 @@
 let id =JSON.parse(window.localStorage.getItem('idMax')||'0' )
-console.log('执行了Id类');
 class Id {
   idValue: number;
   constructor() {

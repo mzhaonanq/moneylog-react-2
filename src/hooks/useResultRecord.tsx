@@ -16,7 +16,6 @@ const useResultRecord=()=>{
   },[])
   useUpdate(()=>{
     window.localStorage.setItem('recordLocalStorage',JSON.stringify(resultRecord))
-      console.log('数据存入了');
   },[resultRecord])
   const saveResultRecord =(record: RecordType)=>{
     if (record.amount <= 0) {

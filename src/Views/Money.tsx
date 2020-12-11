@@ -24,7 +24,7 @@ const Money: React.FunctionComponent = () => {
   const {saveResultRecord} =useResultRecord()
   const [record,setRecord]=useState(defaultRecord)
 
-  console.log(record);
+
   const onChange=(obj: Partial<typeof record>)=>{
     setRecord({...record,...obj})
 }
