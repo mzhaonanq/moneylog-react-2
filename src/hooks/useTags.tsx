@@ -29,6 +29,7 @@ const useTags=()=> {
     const tag = findTagById(id);
     return tags.indexOf(tag);
   };
+  const getTagNameById=(id: number)=>tags.filter(tag=>tag.id===id)[0]
   const updateTag = (id: number, obj: { name: string }) => {
     setTags(tags.map(tag => tag.id === id ? {id, name: obj.name} : tag));
   };
@@ -43,7 +44,7 @@ const useTags=()=> {
       setTags([...tags,{id:(new Id()).idValue,name:tag}])
     }
   }
-  return {tags, setTags, findTagById, updateTag, deleteTag,addTag};
+  return {tags, setTags, findTagById, updateTag, deleteTag,addTag,getTagNameById};
 }
 
 export {useTags}

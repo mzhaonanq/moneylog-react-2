@@ -29,6 +29,6 @@ const useResultRecord=()=>{
       return true
     }
   }
-  return {saveResultRecord}
+  return {resultRecord,saveResultRecord}
 }
 export {useResultRecord}

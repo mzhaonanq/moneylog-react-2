@@ -13,6 +13,10 @@ const MyLayout = styled(Layout)`
   flex-direction: column;
 `;
 
+const Wrapper= styled.div`
+background: #c4c4c4;
+`
+
 const defaultRecord = {
   selectedTagsId: [] as number[],
   note: '',
@@ -44,10 +48,12 @@ const submitRecord=()=>{
         valueForNote={record.note}
         onChangeValue={(note)=>onChange({note})}
       />
+      <Wrapper>
       <CategorySection
         valueForCategory={record.selectedCategory}
         onChangeValue={(selectedCategory)=>onChange({selectedCategory})}
       />
+      </Wrapper>
       <NumberPadSection
         valueForAmount={record.amount}
         onChangeValue={(amount) => onChange({amount})}
